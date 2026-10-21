@@ -1,0 +1,123 @@
+.btn-logout {
+  width: 50px;
+  height: 34px;
+}
+/* .btn-logout :hover {
+  background-color: #f5f4f4;
+}
+.btn-logout :active {
+  background-color: grey;
+}
+@media (max-width: 800px) {
+  .btn-logout {
+    bottom: 81px;
+    left: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .btn-logout {
+    bottom: 150px;
+    left: 0;
+  }
+}
+@media (max-height: 550px) {
+  .btn-logout {
+    bottom: 83px;
+    left: 0;
+  }
+}
+@media (max-height: 500px) {
+  .btn-logout {
+    width: 30px;
+    height: 30px;
+    bottom: 60px;
+    left: 0;
+  }
+} */
+#login-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: RGBA(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 1050;
+  display: none;
+}
+.login {
+  padding: 2rem;
+  background: #37bbec;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+  color: white;
+}
+.login img {
+  margin-left: 20px;
+}
+.login h4 {
+  margin-top: 20px;
+}
+.login .input-group {
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 40px;
+  border-color: white;
+}
+.login .input-group span {
+  background-color: #a3daee;
+  color: #79a2b1;
+  border: 1px solid white;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.login .input-group input {
+  font-weight: 700;
+}
+.login button {
+  width: 200px;
+  display: inline;
+  margin: 0;
+}
+.login hr {
+  width: 280px;
+}
+.login .input-group input::placeholder,
+.login .input-group input::-moz-placeholder,
+.login .input-group input::-webkit-input-placeholder {
+  color: #ffffff;
+}
+#advice-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 999999;
+  display: none;
+}
+.white-modal {
+  background-color: white !important;
+  padding: 2rem;
+  width: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.75);
+  font-weight: 700;
+  color: #666666;
+}
+.white-modal a:not(.closer) {
+  color: #0000c4;
+  text-decoration: underline;
+}
+.closer {
+  color: #666666 !important;
+  font-size: 16px;
+  float: right;
+}
