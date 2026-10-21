@@ -1,0 +1,35 @@
+.redIcon {
+  color: rgba(255, 0, 0, 0.637);
+  font-size: large;
+  line-height: inherit;
+}
+.map-label {
+  min-width: 150px !important;
+  background: transparent;
+  font-weight: bold;
+  color: #333;
+  font-family: inherit;
+  font-size: medium;
+  text-align: center;
+  border: 2px solid;
+  overflow: hidden;
+  height: 32px;
+}
+.div-icon {
+  width: auto !important;
+  height: auto !important;
+  background-color: transparent;
+  display: flex;
+}
+#editableLabelBtn>i {
+  font-size: large;
+  line-height: inherit;
+}
+.icon-text {
+  display: block;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPJJREFUSEvd1M1JQ0EUQOEvi6wEXVlBFNKAohUYwQrEElykAhWsQCzBhRXEQBpI0ApUsAI3Cq5cKCP3QVCi854TwdzNwDBzzv0ZpmXO0Zoz3+IK3hq27ktHZrXozwTTCdxjLSrbxM1UlVVCtSuoLizjKYCvWEJaq6gt+DyCXVzF5gTbuTPKfaYnOA7oGfqlBUP0ArqPy9KC1P80hxQdPJQUrOMugI9YzYWnczkzOMBFQAfYKy04x2FAj3BaWnCNjYDuYFRS0MYL0ppiBc8lBVsYB/AW3Trw74b802eX8zg+cmn6m/5aULcTM89nZ9LU+P8F727oIRncV5QcAAAAAElFTkSuQmCC");
+  height: inherit;
+  background-position: right;
+  background-repeat: no-repeat;
+  filter: opacity(70%);
+}
