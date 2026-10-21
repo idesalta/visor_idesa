@@ -1,0 +1,90 @@
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  /* position: sticky; */
+  margin: 0;
+  border: 0;
+  height: 50px;
+  margin: 10px 10px 0;
+  border-radius: 6px;
+  min-width: 380px;
+  width: fit-content;
+;
+  /*   max-width: 550px; */
+}
+
+@media (max-width: 915px) {
+  .navbar-fixed-top {
+    /* max-width: fit-content; */
+    width: auto;
+    min-width: fit-content;
+  }
+}
+
+.navbar-sticky {
+  position: sticky;
+  height: 60px;
+  background-color: transparent;
+}
+
+/*
+ * Sidebar
+ */
+.sidebar {
+  display: none;
+  padding: 0;
+}
+
+.panel-heading {
+  padding: 10px 5px;
+}
+
+.panel-title {
+  padding: 0 15px;
+}
+
+/* Hide for mobile, show later */
+@media (min-width: 768px) {
+  .sidebar {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar>li>a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.nav-sidebar>.active>a,
+.nav-sidebar>.active>a:hover,
+.nav-sidebar>.active>a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+/* Placeholder dashboard ideas */ 
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.placeholders h4 {
+  margin-bottom: 0;
+}
+
+.placeholder {
+  margin-bottom: 20px;
+}
+
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
