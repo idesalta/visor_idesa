@@ -298,11 +298,30 @@ nav .container-fluid {
 
 .leaflet-top.leaflet-left .leaflet-control {
   clear: none;
+  margin-left: 5px !important;
+  margin-right: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 div.leaflet-top.leaflet-left {
   right: 45px;
   left: auto;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+}
+
+div.leaflet-top.leaflet-right {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+}
+
+div.leaflet-top.leaflet-right .leaflet-control {
+  margin-right: 10px !important;
+  margin-top: 0px !important;
+  margin-bottom: 5px !important;
 }
 
 #top-left-logo {
@@ -653,6 +672,49 @@ div.leaflet-top.leaflet-left {
   border: none;
   border-radius: 4px;
 }
+
+/* Pestañas de Capas del Menú Principal IDESA (Datos / Municipios) */
+#menuTabs {
+  margin: 6px 12px 2px 12px;
+  border-bottom: 2px solid #680205;
+  display: flex;
+}
+
+#menuTabs > li {
+  flex: 1;
+  text-align: center;
+}
+
+#menuTabs > li > a {
+  border-radius: 6px 6px 0 0;
+  background-color: #f1f5f9;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1;
+  border-bottom: none;
+  font-weight: 600;
+  padding: 8px 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+#menuTabs > li > a:hover {
+  background-color: #fdf2f2;
+  color: #680205 !important;
+  border-color: #680205;
+}
+
+#menuTabs > li.active > a,
+#menuTabs > li.active > a:focus,
+#menuTabs > li.active > a:hover {
+  background-color: #680205 !important;
+  color: #ffffff !important;
+  border: 1px solid #680205 !important;
+  border-bottom: 1px solid #680205 !important;
+  font-weight: 700;
+}
+
 
 .panel-heading {
   border: none;
@@ -1529,9 +1591,7 @@ input:checked.switch+label:after {
 }
 
 @media (max-height: 600px) {
-  .leaflet-bottom:not(.leaflet-control-scale) {
-    display: none;
-  }
+  /* .leaflet-bottom:not(.leaflet-control-scale) removido para mantener visibles controles inferiores al hacer zoom */
 
   .leaflet-control-scale {
     margin-left: 5px !important;
@@ -1589,7 +1649,7 @@ input:checked.switch+label:after {
   }
 }
 
-@media (max-height: 550px) {
+@media (max-height: 350px) {
   .leaflet-control-minimap {
     display: none;
   }
