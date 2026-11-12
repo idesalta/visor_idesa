@@ -747,6 +747,12 @@ async function loadTemplate(data, isDefaultTemplate) {
           document.getElementById("sidebar").style.display = "block";
         }
 
+        if (typeof ActiveLayersOrder !== "undefined" && !window.activeLayersOrderInstance) {
+          const activeLayersOrder = new ActiveLayersOrder();
+          activeLayersOrder.createComponent();
+          app.dependencies.activeLayersOrder = true;
+        }
+
         if (!app.dependencies.editableLabel) {
           const editableLabel = new EditableLabel();
           editableLabel.addTo(mapa);

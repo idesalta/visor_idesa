@@ -551,6 +551,9 @@ $("body").on("pluginLoad", function (event, plugin) {
             });
             measureControl.addTo(mapa);
             gestorMenu.plugins["Measure"].setStatus("visible");
+            if (window.toolbarVisibilityToggler) {
+              window.toolbarVisibilityToggler.syncAll();
+            }
           }
           break;
         case "geoprocessing":
@@ -602,10 +605,25 @@ $("body").on("pluginLoad", function (event, plugin) {
             const pdfP = new PdfPrinter();
             pdfP.createComponent();
           }
+          if (typeof CoordinateLocator !== "undefined" && !window.coordinateLocatorInstance) {
+            window.coordinateLocatorInstance = new CoordinateLocator();
+            window.coordinateLocatorInstance.createComponent();
+          }
+          if (typeof BoxZoomTool !== "undefined" && !window.boxZoomToolInstance) {
+            window.boxZoomToolInstance = new BoxZoomTool();
+            window.boxZoomToolInstance.createComponent();
+          }
+          if (window.toolbarVisibilityToggler) {
+            window.toolbarVisibilityToggler.syncAll();
+          }
           break;
         case "consultData":
           const consultData = new ConsultData();
           consultData.createComponent();
+          if (typeof AttributeSearch !== "undefined" && !window.attributeSearchInstance) {
+            window.attributeSearchInstance = new AttributeSearch();
+            window.attributeSearchInstance.createComponent();
+          }
           break;
         case "Draw":
           var orgReadbleDistance = L.GeometryUtil.readableArea;
@@ -863,6 +881,9 @@ $("body").on("pluginLoad", function (event, plugin) {
           L.drawLocal.edit.handlers.remove.tooltip.text =
             "Click sobre la característica a eliminar";
           mapa.addControl(mapa.drawControl);
+          if (window.toolbarVisibilityToggler) {
+            window.toolbarVisibilityToggler.syncAll();
+          }
 
           mapa.on("draw:drawstart", (e) => {
             currentlyDrawing = true;
