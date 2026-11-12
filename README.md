@@ -48,6 +48,45 @@ Respecto a la versión base de Argenmap, este visor incorpora las siguientes cap
    - **Soporte satelital y WMS sin teselas faltantes ni timeouts:** Verificación activa de carga completa de todas las teselas antes de la captura (`complete === true`), resolviendo los bloqueos CORS y evitando recuadros en blanco.
    - **Personalización de metadatos institucionales:** Título editable, subtítulo u organismo, logotipo oficial de IDESA, fecha y hora de emisión, escala gráfica calibrada y rosa de los vientos (símbolo de norte).
 
+6. **Herramienta de Búsqueda por Atributos y Consulta Alfanumérica (Filtros AND / OR):**
+   - Herramienta con acceso directo en la botonera lateral (`fa-filter`) para consultar cualquier capa activa vectorial o de catálogo (por ejemplo Catastro / `fc_parcelas_v20`).
+   - Carga dinámica de campos reales mediante `DescribeFeatureType` en GeoServer o inspección de propiedades locales.
+   - Constructor de filtros con condiciones múltiples combinables por lógica `AND` (cumplir todas las condiciones) u `OR` (cumplir alguna condición), permitiendo buscar por ejemplo un catastro y un plano determinado en una misma consulta.
+   - Resaltado y selección visual de los elementos encontrados sobre el mapa con auto-zoom centrado (`fitBounds`) y fichas de datos en popups interactivos.
+   - Descarga directa de los elementos seleccionados en formato **KML** (para Google Earth / GPS) y **GeoJSON**, además de visualización en la tabla de atributos del visor.
+
+7. **Panel de Capas Activas y Orden de Superposición (TOC con Drag & Drop):**
+   - Acceso con botón dedicado en la botonera lateral izquierda (`fa-arrow-down-up-across-line`) y badge numérico amarillo en tiempo real.
+   - **Reorganización interactiva mediante Arrastrar y Soltar (Drag & Drop):** Permite cambiar el orden de las capas encendidas tomando el tirador `⋮⋮`.
+   - **Control de superposición en Leaflet y GeoServer WMS:** Aplica de inmediato el orden visual (`zIndex`, `bringToFront` y reordenamiento de subcapas WMS `_subLayers`) para garantizar que la capa superior quede siempre en primer plano.
+   - **Deslizadores de opacidad continua:** Ajuste individual de 0% a 100% en tiempo real sin interferir con el arrastre de tarjetas.
+   - **Desactivación sincronizada bidireccional (`🗑️`):** Al remover una capa activa, se apaga de inmediato en el mapa y en el menú general de capas, actualizando los contadores de cada categoría.
+   - **Fijación en pantalla (Pin `📌`):** Permite fijar el panel para interactuar, navegar o consultar el mapa sin que la ventana se cierre al hacer clic.
+
+8. **Ventana Flotante de Leyenda y Simbología Oficial (Icono Paleta 🎨):**
+   - Botón de paleta de colores en cada capa activa para abrir su simbología oficial generada por GeoServer (`GetLegendGraphic`).
+   - **Ventana flotante arrastrable con el mouse:** Se puede desplazar a cualquier sector de la pantalla tomando la cabecera.
+   - **Fondo no bloqueante y sin desenfoque:** El mapa permanece 100% visible, nítido e interactivo por detrás de la ventana.
+   - **Escala natural 1:1 con scroll vertical:** Ideal para leyendas complejas, anchas o con numerosas clases (como *Suelos del NOA*, *Unidades de Vegetación*, *OTBN*), eliminando distorsiones o aplastamientos y permitiendo un desplazamiento fluido.
+
+9. **Estructura Dual del Menú de Capas (Pestañas DATOS y MUNICIPIOS):**
+   - Organización en pestañas superiores dentro del menú de capas:
+     - **DATOS:** Temáticas provinciales completas (Límites, Infraestructura, Clima, etc.).
+     - **MUNICIPIOS:** Coberturas e información geográfica local clasificada por municipio (iniciando con *Rosario de Lerma*).
+   - Compatible y gestionable mediante la aplicación administrativa `gestion datos_json` (Streamlit).
+
+10. **Localización por Coordenadas (Sexagesimal GMS y Grados Decimales):**
+   - Integrada en la barra de herramientas superior derecha junto a medición e impresión (`fa-location-crosshairs`).
+   - Panel interactivo arrastrable con cajitas numéricas individuales para Grados (°), Minutos ('), Segundos (") y Hemisferio (Sur/Norte, Oeste/Este), además de pestaña para Grados Decimales.
+   - Sincronización bidireccional instantánea entre ambos formatos al escribir.
+   - Captura rápida de coordenadas del centro actual del mapa.
+   - Marcador animado distintivo con efecto de pulso, auto-zoom centrado y ficha informativa en popup con botón de copia rápida al portapapeles.
+
+11. **Herramienta de Zoom por Ventana (+ y -) (Box Zoom):**
+   - Botones duales en la barra de herramientas para acercar (`fa-magnifying-glass-plus`) y alejar (`fa-magnifying-glass-minus`) mediante el trazado interactivo de un recuadro en el mapa con el mouse.
+   - Cálculo automático de encuadre óptimo para acercamiento (`fitBounds`) o cálculo de escala y centrado para alejamiento proporcional al tamaño del recuadro dibujado.
+   - Soporte para cancelación inmediata mediante la tecla `Escape`.
+
 ---
 
 ## Funcionalidades Principales

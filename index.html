@@ -81,6 +81,10 @@
   <link href="src/js/components/context-menu/context-menu.css" rel="stylesheet" />
   <link href="src/js/components/user-message/user-message.css" rel="stylesheet" />
   <link href="src/js/components/pdfPrinter/pdfPrinter.css" rel="stylesheet" />
+  <link href="src/js/components/attributeSearch/attributeSearch.css" rel="stylesheet" />
+  <link href="src/js/components/coordinateLocator/coordinateLocator.css" rel="stylesheet" />
+  <link href="src/js/components/boxZoom/boxZoom.css" rel="stylesheet" />
+  <link href="src/js/components/activeLayersOrder/activeLayersOrder.css" rel="stylesheet" />
   <link href="src/js/components/consultData/consultData.css" rel="stylesheet" />
   <link href="src/js/components/about/about.css" rel="stylesheet" />
   <link href="src/js/components/login/login.css" rel="stylesheet" />
@@ -106,6 +110,10 @@
   <script src="src/js/components/UI/UserInterface.js"></script>
   <script src="src/js/components/about/about.js"></script>
   <script src="src/js/components/geoprocessing/IClipLayer.js"></script>
+  <script src="src/js/components/attributeSearch/attributeSearch.js"></script>
+  <script src="src/js/components/coordinateLocator/coordinateLocator.js"></script>
+  <script src="src/js/components/boxZoom/boxZoom.js"></script>
+  <script src="src/js/components/activeLayersOrder/activeLayersOrder.js"></script>
 
   <!-- Leaflet EditableLabel -->
   <link rel="stylesheet" href="src/js/map/plugins/leaflet/leaflet-editable-label/Leaflet.EditableLabel.css" />
@@ -178,6 +186,10 @@
       <button class="ag-btn ag-btn-primary menu-section-btn" id="sidebar-btn" data-target="sidebar" aria-label="Abrir menú de capas" title="Menú de capas">
         <i class="fa-solid fa-layer-group" aria-label="Ícono de capas"></i>
       </button>
+      <button class="ag-btn ag-btn-primary menu-section-btn" id="active-layers-btn" data-target="active-layers-panel" aria-label="Capas activas y orden de superposición" title="Capas activas y orden de superposición">
+        <i class="fa-solid fa-arrow-down-up-across-line" aria-label="Ordenar capas activas"></i>
+        <span id="active-layers-badge" class="alo-btn-badge badge-hidden">0</span>
+      </button>
       <button class="ag-btn ag-btn-primary menu-section-btn" id="basemap-selector-btn" data-target="basemap-selector" aria-label="Abrir selector de mapas base" title="Selector de mapas base">
         <i class="fa-solid fa-map" aria-label="Ícono de mapa base"></i>
       </button>
@@ -194,6 +206,7 @@
     <div id="menu-content" style="display: flex">
       <!-- <div class="loading"><img alt="loading..." src="src/styles/images/loading.svg"></div> -->
       <div id="sidebar" class="nav nav-sidebar panel panel-default" style="display: none"></div>
+      <div id="active-layers-panel" style="display: none"></div>
       <div id="basemap-selector" style="display: none"></div>
       <div id="load-layer" style="display: none"></div>
       <div id="help-tour" style="display: none"></div>
