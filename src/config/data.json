@@ -208,7 +208,9 @@
         "geonode:pob2022_deptos",
         "geonode:fc_subzonas_e790e4e328b17a8b08482da392c63486",
         "geonode:fc_zonas_aaad0cd8acb9b3109130b10301cb211a",
-        "geonode:pobfraccionyradio2022"
+        "geonode:pobfraccionyradio2022",
+        "geonode:expansion_urbana_municipios",
+        "geonode:sectores_expansion_urbana"
       ]
     },
     {
@@ -233,7 +235,9 @@
         "geonode:servidumbres_l",
         "geonode:areas_explotacion_hc_2026",
         "geonode:areas_libres_hc_2026",
-        "geonode:lneas_ssmicas_2d_sismica_2d_salta_2026_copiar"
+        "geonode:lneas_ssmicas_2d_sismica_2d_salta_2026_copiar",
+        "geonode:pozos_totales_salta_2026",
+        "geonode:reas_hidrocarburiferas_en_exploracin_areas_exploracin_hc_2026"
       ]
     },
     {
@@ -342,9 +346,12 @@
       "version": "1.3.0",
       "host": "https://geoportal.salta.gob.ar/geoserver/wms",
       "allowed_layers": [
+        "geonode:destinos_sanitarios_modelo_tiempos_viaje_destinos_salud_refer",
+        "geonode:radios_tiempo_viaje_salud",
         "geonode:rfes",
         "geonode:ciencia_y_tecnica_idesa",
-        "geonode:establecimientos_educativos"
+        "geonode:establecimientos_educativos",
+        "geonode:output_point_layer"
       ]
     },
     {
@@ -452,6 +459,44 @@
       "servicio": "wms",
       "version": "1.3.0",
       "host": "https://wms.ign.gob.ar/geoserver/modelos-digitales-elevaciones/wms"
+    },
+    {
+      "tab": {
+        "id": "Municipios",
+        "searcheable": true,
+        "content": "Municipios"
+      },
+      "type": "wmslayer",
+      "peso": 10,
+      "nombre": "Rosario de Lerma",
+      "short_abstract": "Capas e información geográfica de Rosario de Lerma",
+      "class": "",
+      "seccion": "rosario_de_lerma",
+      "servicio": "wms",
+      "version": "1.3.0",
+      "feature_info_format": "application/json",
+      "host": "https://geo-nodo01.inta.gob.ar/geoserver/wms",
+      "allowed_layers": []
+    },
+    {
+      "tab": {
+        "id": "Municipios",
+        "searcheable": true,
+        "content": "Municipios"
+      },
+      "type": "wmslayer",
+      "peso": 10,
+      "nombre": "Rosario de Lerma",
+      "short_abstract": "Capas e información geográfica de Rosario de Lerma",
+      "class": "",
+      "seccion": "rosario_de_lerma",
+      "servicio": "wms",
+      "version": "1.3.0",
+      "feature_info_format": "application/json",
+      "host": "https://geoportal.salta.gob.ar/geoserver/wms",
+      "allowed_layers": [
+        "geonode:emprendedores_por_barrio"
+      ]
     }
   ],
   "template": "argenmap-leaflet-idera-tpl",
