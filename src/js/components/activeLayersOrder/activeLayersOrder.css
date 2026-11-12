@@ -1,0 +1,683 @@
+/* =========================================================
+   Panel de Capas Activas y Orden de Superposición (IDESA)
+   ========================================================= */
+
+/* Badge contador sobre el botón de la barra lateral */
+#active-layers-btn {
+  position: relative !important;
+}
+
+#active-layers-btn #active-layers-badge,
+.alo-btn-badge {
+  position: absolute !important;
+  top: 3px !important;
+  right: 3px !important;
+  background: #ffcc00 !important;
+  color: #500103 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  padding: 0 4px !important;
+  text-align: center !important;
+  border-radius: 9px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45) !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 25 !important;
+  animation: badgePop 0.25s ease-out;
+}
+
+#active-layers-btn #active-layers-badge.badge-hidden,
+.alo-btn-badge.badge-hidden {
+  display: none !important;
+}
+
+@keyframes badgePop {
+  0% { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Panel contenedor dentro de #menu-content */
+#active-layers-panel {
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  margin: 0.5rem;
+  max-height: 85vh;
+  border: 0;
+  border-radius: 8px;
+  width: 330px;
+  max-width: 360px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  z-index: 1000;
+  animation: panelSlideIn 0.2s ease-out;
+}
+
+/* Soporte de fijar menú (menuFixed) */
+#active-layers-panel.menuFixed {
+  display: block !important;
+}
+
+@keyframes panelSlideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+  #active-layers-panel {
+    width: 290px;
+    max-width: 300px;
+  }
+}
+
+/* Cabecera del panel */
+.alo-header {
+  background: #680205;
+  color: #ffffff;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #500103;
+}
+
+.alo-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alo-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.alo-badge-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.alo-subtitle {
+  margin: 0;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.alo-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alo-pin-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.alo-pin-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.alo-pin-btn.pinned {
+  background: #ffffff;
+  color: #680205;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.alo-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.alo-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Barra de ayuda / indicación de orden */
+.alo-hint-banner {
+  background: #fff8f0;
+  border-bottom: 1px solid #fde68a;
+  color: #92400e;
+  padding: 8px 12px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.alo-hint-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alo-hint-item strong {
+  font-weight: 700;
+}
+
+/* Estado vacío */
+.alo-empty-state {
+  padding: 32px 18px;
+  text-align: center;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.alo-empty-icon {
+  font-size: 38px;
+  color: #d1d5db;
+}
+
+.alo-empty-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.alo-empty-desc {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.alo-open-menu-btn {
+  background: #680205;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  transition: background 0.2s;
+}
+
+.alo-open-menu-btn:hover {
+  background: #500103;
+}
+
+/* Lista arrastrable */
+.alo-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Tarjeta de capa individual */
+.alo-item {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 9px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+}
+
+.alo-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.09);
+}
+
+/* Estados durante el drag & drop */
+.alo-item.dragging {
+  opacity: 0.45;
+  border: 2px dashed #680205 !important;
+  background: #fff5f5 !important;
+  transform: scale(0.98);
+}
+
+.alo-item.drag-over-top {
+  border-top: 3px solid #680205 !important;
+}
+
+.alo-item.drag-over-bottom {
+  border-bottom: 3px solid #680205 !important;
+}
+
+/* Fila principal de la capa: handle, título, controles */
+.alo-item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alo-drag-handle {
+  color: #9ca3af;
+  cursor: grab;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.alo-drag-handle:hover {
+  color: #680205;
+  background: #fee2e2;
+}
+
+.alo-drag-handle:active {
+  cursor: grabbing;
+}
+
+.alo-item-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alo-item-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.alo-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: #6b7280;
+}
+
+.alo-tag {
+  background: #f3f4f6;
+  color: #4b5563;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 9.5px;
+}
+
+.alo-tag.municipio {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* Botones de acción lateral (ojo, quitar) */
+.alo-item-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.alo-action-btn {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all 0.15s;
+}
+
+.alo-action-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.alo-action-btn.visibility-btn.hidden-layer {
+  color: #9ca3af;
+}
+
+.alo-action-btn.remove-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Fila de opacidad rápida */
+.alo-opacity-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 24px;
+  padding-top: 2px;
+}
+
+.alo-opacity-label {
+  font-size: 10.5px;
+  color: #6b7280;
+  min-width: 46px;
+}
+
+.alo-opacity-slider {
+  flex: 1;
+  height: 6px;
+  -webkit-appearance: none;
+  background: #e5e7eb;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Banner de pista para 1 sola capa */
+.alo-hint-banner.single-layer {
+  background: #eff6ff;
+  border-bottom: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.alo-opacity-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #680205;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s;
+}
+
+.alo-opacity-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.alo-opacity-val {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: #374151;
+  min-width: 28px;
+  text-align: right;
+}
+
+/* =========================================================
+   Botón de Leyenda y Modal Flotante de Simbología
+   ========================================================= */
+
+.alo-action-btn.legend-btn {
+  color: #680205;
+}
+
+.alo-action-btn.legend-btn:hover {
+  background: #fef2f2;
+  color: #8b0000;
+}
+
+/* Overlay no bloqueante y sin desenfoque */
+.alo-legend-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  pointer-events: none !important;
+  z-index: 100000;
+}
+
+/* Tarjeta flotante arrastrable adaptable al contenido */
+.alo-legend-modal {
+  position: fixed;
+  top: 85px;
+  right: 50px;
+  background: #ffffff;
+  border-radius: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 250px;
+  max-width: min(580px, 92vw);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  pointer-events: auto !important;
+  animation: aloModalZoom 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100001;
+}
+
+@keyframes aloModalZoom {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Cabecera del modal arrastrable */
+.alo-legend-header {
+  background: #680205;
+  color: #ffffff;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 2px solid #500103;
+  flex-shrink: 0;
+  cursor: grab;
+  user-select: none;
+}
+
+.alo-legend-header:active {
+  cursor: grabbing;
+}
+
+.alo-legend-header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.alo-legend-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.alo-legend-icon {
+  font-size: 15px;
+  color: #ffcc00;
+  flex-shrink: 0;
+}
+
+.alo-legend-title {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 360px;
+}
+
+.alo-legend-subtitle {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 360px;
+}
+
+.alo-legend-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.alo-legend-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cuerpo del modal (área scrolleable con tamaño natural 1:1 ajustado al contenido) */
+.alo-legend-body {
+  padding: 10px 14px;
+  background: #f8fafc;
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: calc(85vh - 90px);
+  text-align: center;
+}
+
+.alo-legend-img-container {
+  display: inline-block;
+  background: #ffffff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  max-width: 100%;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.alo-legend-img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.alo-legend-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 25px 0;
+}
+
+.alo-legend-loading i {
+  font-size: 24px;
+  color: #680205;
+}
+
+.alo-legend-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
+  padding: 20px;
+}
+
+.alo-legend-error i {
+  font-size: 30px;
+  color: #cbd5e1;
+}
+
+/* Pie del modal */
+.alo-legend-footer {
+  background: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.alo-legend-hint {
+  font-size: 10.5px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.alo-legend-ok-btn {
+  background: #680205;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.alo-legend-ok-btn:hover {
+  background: #500103;
+}

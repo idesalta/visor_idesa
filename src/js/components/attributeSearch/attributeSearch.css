@@ -1,0 +1,638 @@
+/* =========================================================
+   Estilos de la Herramienta de BÃºsqueda por Atributos (IDESA)
+   ========================================================= */
+
+/* BotÃ³n en la botonera lateral */
+#attribute-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#attribute-search-btn i {
+  font-size: 1.15rem;
+}
+
+/* Modal Flotante / DiÃ¡logo */
+#attribute-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  pointer-events: none;
+  z-index: 99985;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+@keyframes asFadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.as-dialog {
+  pointer-events: auto;
+  background: #ffffff;
+  width: 95%;
+  max-width: 620px;
+  max-height: 88vh;
+  border-radius: 10px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #2c3e50;
+  animation: asFadeIn 0.2s ease-out;
+  transition: max-height 0.22s ease, width 0.22s ease;
+}
+
+.as-dialog.as-minimized {
+  max-height: 48px !important;
+  width: 320px !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.as-dialog.as-minimized .as-body,
+.as-dialog.as-minimized .as-footer {
+  display: none !important;
+}
+
+/* Cabecera */
+.as-header {
+  background: var(--primary-color, #680205);
+  color: #ffffff;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  cursor: move;
+}
+
+.as-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.as-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.as-header-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.as-header-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.as-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 1px 6px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.as-close-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Cuerpo */
+.as-body {
+  padding: 16px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #fdfdfd;
+}
+
+.as-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.as-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.as-control {
+  width: 100%;
+  padding: 7px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #1f2937;
+  background: #ffffff;
+}
+
+.as-control:focus {
+  border-color: var(--primary-color, #680205);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 125, 185, 0.15);
+}
+
+.as-control:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+#as-btn-refresh-layers {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+#as-btn-refresh-layers:hover {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+/* Selector de Ámbito Espacial y Selector Lógico (AND / OR) */
+.as-spatial-selector,
+.as-logic-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  align-items: center;
+}
+
+.as-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #374151;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+}
+
+.as-radio-label input[type="radio"] {
+  accent-color: var(--primary-color, #680205);
+  cursor: pointer;
+}
+
+/* Filas de Condiciones */
+.as-conditions-box {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.as-condition-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 1.2fr 32px;
+  gap: 6px;
+  align-items: center;
+}
+
+@media (max-width: 520px) {
+  .as-condition-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.as-btn-remove {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.as-btn-remove:hover {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.as-btn-add {
+  align-self: flex-start;
+  background: #ffffff;
+  color: var(--primary-color, #680205);
+  border: 1px dashed var(--primary-color, #680205);
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: background 0.2s;
+}
+
+.as-btn-add:hover {
+  background: #fdf2f2;
+}
+
+/* Panel de Resultados */
+.as-results-box {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+  margin-top: 5px;
+}
+
+.as-results-status {
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.as-results-status.success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.as-results-status.empty {
+  background: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.as-results-status.error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+/* Lista interactiva de resultados */
+.as-results-list {
+  max-height: 140px;
+  overflow-y: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #ffffff;
+  margin-bottom: 10px;
+}
+
+.as-result-item {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: background 0.15s;
+}
+
+.as-result-item:last-child {
+  border-bottom: none;
+}
+
+.as-result-item:hover {
+  background: #f0fdf4;
+}
+
+.as-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.as-result-item .as-item-text {
+  color: #1f2937;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.as-result-item .as-item-sub {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.as-item-zoom-btn {
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.as-item-zoom-btn:hover {
+  background: #16a34a;
+  color: #ffffff;
+  border-color: #16a34a;
+}
+
+/* Botones de ExportaciÃ³n / Descarga */
+.as-export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.as-btn-view-map {
+  background: #334155;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.as-btn-view-map:hover {
+  background: #1e293b;
+}
+
+.as-btn-download {
+  background: #15803d;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.as-btn-download:hover {
+  background: #166534;
+}
+
+.as-btn-table {
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.as-btn-table:hover {
+  background: #0369a1;
+}
+
+.as-btn-clear-selection {
+  background: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.as-btn-clear-selection:hover {
+  background: #e5e7eb;
+}
+
+/* Pie del modal */
+.as-footer {
+  padding: 10px 18px;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.as-btn-primary {
+  background: var(--primary-color, #680205);
+  color: #ffffff;
+  border: none;
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.as-btn-primary:hover {
+  background: #500103;
+}
+
+.as-btn-cancel {
+  background: #f3f4f6;
+  color: #4b5563;
+  border: 1px solid #d1d5db;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.as-btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+/* Spinner */
+.as-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: asSpin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes asSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================================
+   Barra de Acciones Flotante Persistente en el Mapa
+   Permite descargar KML/GeoJSON y hacer zoom aun con el modal cerrado
+   ========================================================= */
+.as-floating-toolbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  z-index: 99980;
+  animation: asSlideUp 0.25s ease-out;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 13px;
+  user-select: none;
+}
+
+@keyframes asSlideUp {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.as-ft-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--primary-color, #680205);
+  padding: 0 8px 0 4px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.as-ft-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  border-radius: 18px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.as-ft-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.as-ft-btn.as-ft-btn-primary {
+  background: var(--primary-color, #680205);
+  color: #ffffff;
+  border-color: var(--primary-color, #680205);
+}
+
+.as-ft-btn.as-ft-btn-primary:hover {
+  background: #500103;
+  color: #ffffff;
+}
+
+.as-ft-btn.as-ft-btn-kml {
+  background: #15803d;
+  color: #ffffff;
+  border-color: #15803d;
+}
+
+.as-ft-btn.as-ft-btn-kml:hover {
+  background: #166534;
+  color: #ffffff;
+}
+
+.as-ft-btn.as-ft-btn-geojson {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+.as-ft-btn.as-ft-btn-geojson:hover {
+  background: #0369a1;
+  color: #ffffff;
+}
+
+.as-ft-btn-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 4px 7px;
+  font-size: 13px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.as-ft-btn-close:hover {
+  color: #dc2626;
+  background: #fee2e2;
+}
+

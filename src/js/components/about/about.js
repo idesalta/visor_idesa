@@ -183,6 +183,9 @@ class AboutUs {
         <li><strong>Nuevos mapas base:</strong> integración de capas satelitales e híbridas de alta resolución (Google Satellite y Google Hybrid).</li>
         <li><strong>Organización y visualización optimizada:</strong> categorización adaptada y menú contextual estilizado para capas activas.</li>
         <li><strong>Módulo de impresión y exportación a PDF:</strong> ventana modal con vista previa interactiva, títulos personalizables, orientación horizontal/vertical sin franjas blancas y referencias balanceadas.</li>
+        <li><strong>Búsqueda avanzada por atributos:</strong> consulta de capas activas (como Catastro) con filtros lógicos múltiples AND/OR, resaltado vectorial con auto-zoom y descarga en formato KML o GeoJSON.</li>
+        <li><strong>Localizador por coordenadas (GMS / Decimal):</strong> herramienta en barra superior para ubicar puntos ingresando grados, minutos, segundos y hemisferio o grados decimales, con sincronización en tiempo real y marcador animado.</li>
+        <li><strong>Zoom por ventana (+ y -):</strong> acercamiento y alejamiento dinámico dibujando recuadros con el mouse directamente sobre el mapa.</li>
       </ul>
     `;
 

@@ -1,0 +1,102 @@
+/* =========================================================
+   Estilos de la Herramienta de Zoom por Ventana (IDESA)
+   ========================================================= */
+
+/* Botones individuales de Zoom Ventana en la barra superior */
+#boxZoomIn,
+#boxZoomOut {
+  margin-left: 5px !important;
+  margin-right: 0px !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+#boxZoomIn a,
+#boxZoomOut a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  transition: all 0.15s ease;
+}
+
+#boxZoomIn i,
+#boxZoomOut i {
+  font-size: 14px;
+  color: #333333;
+}
+
+#boxZoomIn a:hover {
+  color: #680205;
+  background-color: #f4f4f4;
+}
+
+#boxZoomOut a:hover {
+  color: #0284c7;
+  background-color: #f4f4f4;
+}
+
+/* Estado activo cuando la herramienta está seleccionada */
+#boxZoomIn a.active {
+  background-color: #680205 !important;
+  color: #ffffff !important;
+}
+
+#boxZoomOut a.active {
+  background-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+/* Ocultamiento estricto al pulsar la llave de "Esconder herramientas" */
+#boxZoomIn[hidden],
+#boxZoomOut[hidden] {
+  display: none !important;
+}
+
+/* Recuadro de arrastre visual sobre el mapa (Marquee) */
+.box-zoom-marquee {
+  position: absolute;
+  border: 2px dashed #680205;
+  background: rgba(104, 2, 5, 0.18);
+  pointer-events: none;
+  z-index: 9999;
+  box-sizing: border-box;
+  animation: boxZoomMarqueePulse 1.2s infinite alternate ease-in-out;
+}
+
+.box-zoom-marquee.zoom-out {
+  border: 2px dashed #0284c7;
+  background: rgba(2, 132, 199, 0.18);
+}
+
+@keyframes boxZoomMarqueePulse {
+  0% { border-color: rgba(104, 2, 5, 0.9); }
+  100% { border-color: rgba(220, 38, 38, 0.95); }
+}
+
+/* Notificación flotante sutil mientras la herramienta está activa */
+.box-zoom-hint {
+  position: fixed;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 41, 59, 0.92);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  z-index: 99980;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: boxZoomHintFade 0.2s ease-out;
+}
+
+@keyframes boxZoomHintFade {
+  from { opacity: 0; transform: translate(-50%, -10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
